@@ -18,7 +18,7 @@ class MainActivity : ComponentActivity() {
         compName = ComponentName(this, MyDeviceAdminReceiver::class.java)
 
         if (devicePolicyManager.isAdminActive(compName)) {
-            devicePolicyManager.lockNow() // Lock the device immediately
+            devicePolicyManager.lockNow()
             finish()
         } else {
             val intent = Intent(DevicePolicyManager.ACTION_ADD_DEVICE_ADMIN)
