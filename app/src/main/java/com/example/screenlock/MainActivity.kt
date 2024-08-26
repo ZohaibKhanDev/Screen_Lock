@@ -13,11 +13,12 @@ class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         devicePolicyManager = getSystemService(Context.DEVICE_POLICY_SERVICE) as DevicePolicyManager
         compName = ComponentName(this, MyDeviceAdminReceiver::class.java)
 
         if (devicePolicyManager.isAdminActive(compName)) {
-            devicePolicyManager.lockNow()
+            devicePolicyManager.lockNow() // Lock the device immediately
             finish()
         } else {
             val intent = Intent(DevicePolicyManager.ACTION_ADD_DEVICE_ADMIN)
